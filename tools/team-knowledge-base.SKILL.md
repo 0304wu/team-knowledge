@@ -7,6 +7,10 @@ description: Build, maintain, and query a persistent team knowledge base from sh
 
 Treat the team's shared folder or connected document store as the persistent source of truth. The skill instructions define how to organize and query that source; they do not replace the source files.
 
+## Progressive loading and context budget
+
+Never load the entire repository or all papers into one context. First read only `00_index/catalog.md`, `00_index/update-log.md`, relevant FAQ entries, and filenames. Then open at most 5 matching Markdown records. Open at most 3 original PDFs, and only the pages or sections needed to verify the answer. Search headings and keywords before reading large files. Narrow broad results by topic, year, project, method, or status instead of silently truncating content. Cite only sources actually read and state when candidates were not opened.
+
 ## Default collection structure
 
 Create or maintain this structure unless the team already has an established one:

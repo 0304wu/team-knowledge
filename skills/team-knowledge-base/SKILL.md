@@ -7,6 +7,19 @@ description: Build, maintain, and query a persistent team knowledge base from sh
 
 Treat the team's shared folder or connected document store as the persistent source of truth. The skill instructions define how to organize and query that source; they do not replace the source files.
 
+## Progressive loading and context budget
+
+Do not load the whole repository, every Markdown file, or all PDFs into one context. Use staged retrieval:
+
+1. **Stage 1: map** - read only `00_index/catalog.md`, `00_index/update-log.md`, relevant FAQ entries, and filenames. For a broad question, return candidate titles and ask or infer a narrow topic before opening records.
+2. **Stage 2: shortlist** - open only the most relevant companion Markdown records, normally at most 5 candidates. Use title, topic, DOI, owner, date, and summary to rank them.
+3. **Stage 3: evidence** - open the original PDF or full source only for the selected records and only the pages or sections needed to verify a claim. Default to at most 3 originals per answer unless the user asks for a larger comparison.
+4. **Stage 4: answer** - cite the files actually read, distinguish evidence from interpretation, and state which candidates were not opened.
+
+If the shortlist is still too large, narrow by topic, year, project, method, or status. Never solve a context-size problem by silently truncating files. Do not load unrelated skills, archived material, raw datasets, or code unless the question requires them. When a source is too large, search headings and keywords first, then read small relevant windows.
+
+For ingestion, inspect the new attachment and the relevant index entries first. Do not reread the entire archive. For maintenance, modify only the index records affected by the change.
+
 ## Default collection structure
 
 Create or maintain this structure unless the team already has an established one:
