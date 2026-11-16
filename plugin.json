@@ -1,0 +1,11 @@
+{
+  "name": "team-scientific-skills",
+  "version": "0.1.0",
+  "description": "团队论文知识库、论文阅读、实验记录和技术流程图 skills。",
+  "skills": [
+    "skills/team-knowledge-base",
+    "skills/paper-reading",
+    "skills/experiment-record",
+    "skills/technical-flowchart"
+  ]
+}

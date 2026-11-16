@@ -14,6 +14,33 @@
 - `07_faq/`：经过确认的常见问题答案
 - `99_archive/`：已经过时但需要保留的资料
 - `tools/`：索引、检索、去重和安装工具
+- `skills/`：可一次安装的团队 skills bundle，结构参考 scientific-agent-skills
+- `plugin.json`：skills 清单和版本信息
+- `tests/`：不依赖第三方包的结构检查
+
+## 一次安装全部 skills
+
+这是一个可复制的 skills bundle。成员不需要逐个复制文件：获取仓库后，在仓库根目录打开 PowerShell，运行：
+
+```powershell
+.\tools\install-skills.ps1
+```
+
+脚本会一次安装 `team-knowledge-base`、`paper-reading`、`experiment-record` 和 `technical-flowchart` 到当前电脑的 Codex skills 目录。安装后重启 Codex 或新建聊天即可发现它们。
+
+如果使用支持插件安装的 Codex 版本，也可以在仓库根目录尝试：
+
+```powershell
+codex plugins install .
+```
+
+若该命令不可用，使用上面的 PowerShell 脚本即可；知识库文件仍然保存在 GitHub 仓库中，安装 skill 不会复制全部论文到聊天里。
+
+检查打包结构：
+
+```powershell
+python .\tests\validate_package.py
+```
 
 ## 五步工作流
 
