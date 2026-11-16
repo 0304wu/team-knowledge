@@ -103,3 +103,27 @@ When ingesting a paper, use [references/paper-record-template.md](references/pap
 
 Use the user's language, normally Chinese. Summarize originals archived, notes and index changes, duplicates skipped, local commit state, and remote synchronization state. Include unresolved extraction or access issues. Provide GitHub Desktop steps only for the actual blocker; Fetch origin retrieves remote metadata, and Pull origin integrates available remote updates. Neither alone uploads local changes. Publish branch may upload a new branch to an existing remote and is distinct from Publish repository.
 
+
+## Primary workflow: upload and reuse
+
+The default team workflow is knowledge reuse, not repeated paper analysis. Assume an uploaded paper may already have been explained by the contributor.
+
+When a user attaches a paper, an explained note, or a project summary and asks to add it:
+
+1. Use the configured knowledge-base repository path. If the path is missing, ask for it once; do not silently save to a temporary chat folder.
+2. Copy the uploaded original or note into the appropriate repository category. Preserve the original and use a stable filename.
+3. If a companion explanation is supplied, store it beside the source as Markdown. Do not replace a detailed team explanation with a generic AI summary.
+4. Extract only lightweight metadata needed for reuse: title, authors, year, DOI, topic, keywords, contributor, date, source path, and a short abstract or takeaway.
+5. Update `00_index/catalog.md`, adding a searchable entry and links to the original and explanation. Update `00_index/update-log.md`.
+6. Check exact hashes, filenames, titles, and DOI values for duplicates. If a likely duplicate exists, report it and ask whether to merge or keep the new version.
+7. Report the saved repository paths and whether the change is local, committed, or pushed. Never claim GitHub synchronization without verifying it.
+
+A contributor-facing prompt should be as simple as:
+
+```text
+把我上传的论文和讲解加入团队知识库，更新目录，不需要重新分析论文。
+```
+
+For later reuse, search the catalog, notes, FAQ, and team explanations before opening original PDFs. Answer with the relevant document title, repository path, and contributor/date. Only perform full paper analysis when the user explicitly requests it.
+
+This workflow can run from a Codex attachment, but persistence requires writing the result into the repository and committing or pushing it. Uploading an attachment to chat alone is temporary.
